@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html style="">
+	<head>
+		<title>LUIS LIMA :: Oficial</title>
+		<meta charset="UTF-8">
+		<link rel="manifest" href="manifest.json">
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="bancoInfos.js"></script>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				transition: 2s margin ease !important;
+			}
+			
+			.fundoCinza{
+				background-color: #000;
+			}
+			
+			.degradePreto{
+				background-color: #000;
+				//background-image: linear-gradient(#000, #fff);
+			}
+			
+			.tudo{ margin: 100% 0% }
+			#aId{ transition: 0.5s all ease; important! }
+			
+			::target{
+				background-color: #f00;
+			}
+			
+			body{
+				font-family: verdana;
+				background-image: repeating-linear-gradient(rgba(255,255,255,0.5), rgba(0,0,0,0.0) 2px), repeating-linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.0) 2px),  url('img/cover.png');
+				background-attachment: fixed;
+				background-size: cover;
+				background-position: 50%;
+			}
+
+			#logo{
+				background-position: right;
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-image: url('img/LLlogo.png');
+			}
+
+			#tudo{
+			}
+
+			#menuNav{  }
+			.menuNav:target{
+				display: grid;
+				grid-template-columns: 250px 30px;
+				position: fixed;
+				background-color: #000;
+				min-width: 300px;
+				right: 0px;
+				animation-name: menuAbre;
+				animation-duration: 0.5s;
+			}
+
+			#menuNav div{
+				display: grid;
+				margin: 20px;
+			}
+			
+			#menuNav div a{
+				color: #fff;
+				line-height: 50px;
+				text-decoration: none;
+				border: solid #111;
+				border-width: 0px 0px 1px 0px;
+				transition: 0.5s all ease;
+			}
+			#menuNav a:hover{
+				border: solid #888;
+				border-width: 0px 0px 1px 0px;
+			}
+			
+			#barraMenu{
+				position: fixed;
+				font-size: 16px;
+				width: 100%;
+				display: grid;
+				grid-template-columns: 190px 40px 90px;
+				justify-content: space-between;
+				//background-color: rgba(0,0,0,1.0);
+				
+			}
+			
+			#barraMenu a, #barraMenu a img{
+				text-align: center;
+				list-style: none;
+				text-decoration: none;
+				color: #fff;
+				line-height: 100px;
+				transition: 1s all ease;important!
+			}
+			
+			#barraMenu a:hover, #barraMenu a img:hover{
+				//background-color: rgba(255,255,255,0.1);
+				text-shadow: 0px 2px 5px #555;
+				//background-size: 90px;
+				color: #eef;
+			}
+
+			/** configurações do Banner **/
+			#comandosBanner{
+				transition: 1s all ease;
+				width: 100%;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-position: 50% 0%;
+				display: grid;
+				grid-template-columns: 0% 100% 0%;
+				//background-image: url('https://lh3.googleusercontent.com/VvP5dmvB9Gs5UePYTvXWN2HpqO0HdYfShbxQGTZNzRDoX33aSzZrHu8NqQocgGR6pmBAizedMP0ZHAq1SrsVNoBASFxjN6qMWN4phU0ntXxWriiBWTWDbtWfVpDWiUJr6uA5iglvCLvU2YFELDFRuqyYYk0dqF1Eibe5DoOwD4MAv6sLp8XatdFMTX9zaBBbMxzkz8PVcIQ5Imwpd9Smmdw_-hQgFjfUNEyKoAlacmGQcxwPQl1Qhy9Cs4j8OrygprTsoU3oHkAw0u8ibXCC8fQnforSmAFr8dBjVKLnyRU5vCNP_8UsJwyMZlzghwSYK5G7E1ABa_3Fdy_Z2EBiAXiDMXv75911WQCpx9LO3ip96ccu5XABXyvPTNS8fxLtknjhttF-MW8FgfGje8OyGMm-g16gPgtpmhMRFyBriVOYsjKmGC_27KJhqYYLXbxaOMnDVZH4zI-OAztw9gWx3xzHb-PjGA34sf0luu5beSW70-jl5OYqKGRjBLo5cUnxs9gPiYZBcArR6fXrVQcwsVYVYx9qqqYd5m96eeHfPbthxJc3mVEFanMI2pX9l8iIe_nN9enSVOcVfvgvlvIS6Wt_cq8fdscyNBAvuOOJyPA_PVvkdWHYGcKCSSywOltSmTupnV4QYk0gWleGMMGVw1rfsGFlxt9-XA_C0OLXspC7_qYLBI8rsvc=w876-h657-no');
+				background-image: url('img/llbg.jpg');
+			}
+			
+			#comandosBanner a{ text-decoration: none; }
+			
+			#comandosBanner a{
+				//background-color: rgba(200,200,200,0.9);
+				color: #fff;
+				text-align: center;
+				font-size: 40px;
+				text-shadow: 0px 5px 8px #555;
+			}
+
+			#aId{
+				background-image: linear-gradient(0deg, #000, rgba(0,0,0,0.0));
+			}
+
+			#aId h2{
+				font-family: monospace;
+			}
+
+			#comandosBanner a img{
+				width: 60%;
+				transition: 0.5s all ease;
+			}
+			
+			#reprodutor{
+				border: 0px solid;
+				height: 100px;
+				width: 100px;
+				position: fixed;
+				border-radius: 50px;
+			}
+
+			div#menuNav:target a{
+				text-decoration: none;
+				font-size: 28px;
+				color: #fff;
+			}
+			
+			div:target div{
+				//margin: 15px;
+				//line-height: 30px;
+			}
+
+			#playlistMusicas:target div#playlist{
+			}
+
+			#playlistMusicas:target .playlistAtual{
+			}
+
+			#playlistMusicas:target div.botoes, #calendario:target div.botoes, #galeria:target div.botoes{
+				display: grid;
+				grid-template-columns: 150px 50px;
+				justify-content: space-between;
+			}
+
+			#playlistMusicas:target div a#mzkBotoes, #calendario:target div a#mzkBotoes, #galeria:target div a#mzkBotoes{
+				padding: 10px;
+				display: block;
+			}
+			
+			#playlistMusicas:target, #calendario:target, #galeria:target{
+				transition: 0.5s;
+				width: 100%;
+				display: grid;
+				grid-template-columns: 90% 5%;
+				position: fixed;
+				color: #fff;
+				top: 100px;
+				overflow-y: scroll;
+				padding: 20px 0px;
+				background-color: #000000;
+				height: 75%;
+				box-shadow: 0px 10px 15px -5px #333;
+				animation-name: darZoom;
+				animation-duration: 0.5s;
+				justify-content: space-around;
+				margin: 0px 0px 20px 0px;
+			}
+
+			.fechaMenu a{
+				text-decoration: none;
+				font-size: 28px;
+				color: #fff;
+			}
+
+			hr{
+				border: 1px solid #444;
+				margin: 10px 0px;
+			}
+
+			.cartao{
+				background-position: 80% 90%;
+				background-size: 10%;
+				background-repeat: no-repeat;
+				width: 80%;
+				margin: 10% 10%;
+				padding: 5% 0px;
+				color: #333;
+				top: 120px;
+				background-color: #ffffff;
+				border-radius: 3px;
+			}
+			
+			.titulo{
+				padding: 35px 0px 0px 0px;
+			}
+			
+			.distorce{
+				//transform: skewY(10deg);
+				//border-top-right-radius: 320px;
+				border-bottom-left-radius: 320px;
+			}
+			
+			.grade a{
+				color: #333;
+				text-align: center;
+				background: rgba(255,255,255,0.4);
+				width: 100%;
+				padding: 100px 0px;
+				text-shadow: 0px 0px 3px #fff, 0px 0px 3px #fff, 0px 0px 5px #fff;
+			}
+			
+			#playlist div:hover{
+				transform: scale(1.1)
+			}
+
+			#playlist div{
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: 50%;
+				margin: 10px;
+				display: grid;
+				transition: 0.3s all ease !important;
+			}
+
+			#gradeGaleria div:hover a{
+				background: rgba(255,255,255,0.0);
+			}
+			
+			#gradeGaleria div:hover{
+				transform: scale(1.02);
+			}
+
+			#gradeGaleria div{
+				transition: 0.3s all ease !important;
+				background-size: cover;
+				background-position: 50%;
+				background-repeat: no-repeat;
+				display: grid;
+			}
+			
+			.grade{
+				display: grid;
+				grid-template-columns: 33.3% 33.3% 33.3%;
+				justify-content: space-around;
+			}
+			
+			.playlistAtual{
+				margin: 0px 15%;
+				padding: 100px 0px;
+			}
+			
+			.botoes a{
+				border: 3px solid #fff;
+				margin: 10px 0px;
+				color: #fff;
+				text-decoration: none;
+				text-align: center;
+			}
+
+			.cartao div{
+				margin: 20px;
+				line-height: 30px;
+			}
+
+			@media only screen and (max-width: 500px) {
+				#aId{
+					background-size: 90%;
+				}
+
+				#aId h2{
+					font-size: 20px;
+				}
+				
+				.grade{
+					display: grid;
+					grid-template-columns: 50% 50%;
+				}
+				
+				.cartao div{
+					margin: 5px;
+				}
+
+				#comandosBanner a img{ width: 100% }
+				
+				footer{
+					padding: 80px 10px 10px 10px;
+					font-size: 12px;
+				}
+
+				.posicao2 {
+					grid-column: 1/ span 3;
+				}
+
+			}
+
+			@media print{
+				#barraMenu{ display: none; }
+			}
+
+			{
+				box-shadow: 0px 10px 15px -5px #888;
+				border: 1px solid #eee;
+			}
+
+			@keyframes darZoom{
+				0%{ transform: scale(0.001)}
+				50%{ transform: scale(1.02); box-shadow: 0px 15px 30px -15px #555 }
+				100%{ transform: scale(1.0) }
+			}
+
+			@keyframes menuAbre{
+				0%{ right: -80%; transform: scale(0.01, 1.0 );}
+				//50%{ transform: scale(1.02); box-shadow: 0px 15px 30px -15px #555 }
+				100%{ right: 0%; }
+			}
+
+			.escondido{
+				display: none;
+			}
+			
+			#rodape{
+				margin: 20px 0px 0px 0px;
+				padding: 5% 0px;
+				display: grid;
+				grid-template-columns: 45% 45%;
+				justify-content: space-around;
+			}
+			
+			#infos a, #infos h3{
+				text-decoration: none;
+				color: #fff;
+				line-height: 30px;
+			}
+
+			#infos{
+				display: grid;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+		
+			function getById(id){
+				return document.getElementById(id);
+			}
+		
+			function getByClass(cl){
+				return document.getElementsByClassName(cl);
+			}
+			
+			function novoElm(elemento){
+				return document.createElement(elemento);
+			}
+
+			function slide1(){
+				//document.getElementById("anterior").href = "javascript:slide3()";
+				//document.getElementById("proximo").href = "javascript:slide2()";
+				//document.getElementById('comandosBanner').style.backgroundImage = "url('img/llbg.jpg')";
+				//document.getElementById('aId').style.backgroundImage = "url('images/dualipa.jpg')";
+				document.getElementById('dstqCapa').src = "images/dualipa.jpg";
+				setTimeout("slide2()", 3000)
+				//document.getElementById('aId').href="#primeiro"
+				document.getElementById('dstqNome').innerText="I don't give a f*ck \r(Luís Lima Remix)"
+			}
+			  
+			function slide2(){
+				//document.getElementById("anterior").href = "javascript:slide1()";
+				//document.getElementById("proximo").href = "javascript:slide3()";
+				//document.getElementById('comandosBanner').style.backgroundImage = "url('img/llbg2.jpg')";
+				//document.getElementById('aId').style.backgroundImage = "url('images/supercombo.jpg')";
+				document.getElementById('dstqCapa').src = "images/supercombo.jpg";
+				setTimeout("slide3()", 3000)
+				//document.getElementById('aId').href="#segundo"
+				document.getElementById('dstqNome').innerText="Piloto Automático \r(Luís Lima Remix)"
+			}
+			  
+			function slide3(){
+				//document.getElementById("anterior").href = "javascript:slide2()";
+				//document.getElementById("proximo").href = "javascript:slide1()";
+				//document.getElementById('comandosBanner').style.backgroundImage = "url('img/llbg3.jpg')";
+				//document.getElementById('aId').style.backgroundImage = "url('images/caetano.jpg')";
+				document.getElementById('dstqCapa').src = "images/caetano.jpg";
+				setTimeout("slide1()", 3000)
+				//document.getElementById('aId').href="#terceiro"
+				document.getElementById('dstqNome').innerText="Você Não Me Ensinou a Te Esquecer \r(Luís Lima Remix)"
+			}
+			
+		</script>
+		
+	</head>
+	
+	<body onload="slide1()" class="tagCorpo" id="tagCorpo">
+		<div id="menuPlayer">
+			<iframe scrolling="no" frameborder="no" allow="autoplay" name="reprodutor" id="reprodutor"></iframe>
+		</div>
+
+		<header>
+		
+			<div id="barraMenu" class="fundoCinza">
+				<a href="javascript:void(0)" id="logo" style="background-position: left;text-align: right;">LUIS LIMA</a>
+				<span></span>
+				<a href="#menuNav" style="font-size: xx-large" id="abrirMenu">&#9776;</a>
+			</div>
+			<div id="menuNav" class="menuNav escondido">
+				<div>
+					<a href="#">Home</a>
+					<a href="#playlistMusicas" onclick="carregarTodasMusicas()">Músicas</a>
+					<a href="#galeria" onclick="carregarTodaGaleria()">Galeria</a>
+					<a href="#calendario">Calendário</a>
+					<a href="#contato">Contato</a>
+				</div>
+				<a href="#Fecha" id="fechaMenu"  style="height: 35px; width: 23px;">&times;</a>
+			</div>
+
+		</header>
+		<div id="tudo" class="tudo">		
+			<!--<div id="primeiro" class="escondido cartao" style="background-color: rgba(255,0,0,0.95);">-->
+			<div id="primeiro" class="escondido cartao" style="">
+				<div>
+					<h2>Web Design</h2><hr/>
+					<p>Sites responsivos criados com um 'look and feel' específicamente diferenciado, 
+					com imersão baseada em uma aparência única para cada cliente.</p>
+				</div>
+				<a href="#">&times;</a>
+			</div>
+			<!--<div id="segundo" class="escondido cartao" style="background-color: rgba(0,255,0,0.95);">-->
+			<div id="segundo" class="escondido cartao" style="">
+				<div>
+					<h2>Gerenciamento</h2><hr/>
+					<p>Sistemas construídos em Web, com a facilidade de serem acessados a partir de 
+					qualquer lugar, para gestão de estoque, serviços ou pessoas.</p>
+				</div>
+				<a href="#">&times;</a>
+			</div>
+			<!--<div id="terceiro" class="escondido cartao" style="background-color: rgba(0,0,255,0.95);">-->
+			<div id="terceiro" class="escondido cartao" style="">
+				<div>
+					<h2>Tecnologia</h2><hr/>
+					<p>O uso de linguagens de marcação como HTML, PHP e MySQL para manter a integridade dos dados armazenados, 
+					com segurança e rapidez na inicialização das aplicações desenvolvidas.</p>
+				</div>
+				<a href="#">&times;</a>
+			</div>
+			
+			<div class="apresentacao" id="apresentacao">
+				<div style="">
+				</div>
+				<div id="comandosBanner" style="">
+					<a id="proximo"><b></b></a>
+					<a id="aId" style=""><img id="dstqCapa" type="image/jpeg" /><h2 id="dstqNome">LLDev Sistemas Web</h2></a>
+					<a id="anterior"><b></b></a>
+				</div>
+			</div>
+				<div class="distorce degradePreto">
+					<div class="playlistAtual" style="" id="playlistMusicas">
+						<div>
+							<div class="botoes">
+								<h2 style="color: #fff;" class="titulo">Músicas</h2>
+								<div>
+									<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarMusicas()">&times;</a>
+								</div>
+							</div>
+						<br/>
+							<div id="playlist" class="grade">
+							</div>
+						</div>
+					</div>
+				</div>
+		
+			<div id="corpo">
+				<div id="galeria" class="cartao sombraLeve" style="background-image: url('')">
+					<div>
+						<div class="botoes">
+							<h2 class="titulo">Graleria</h2>
+							<div>
+								<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarGaleria()">&times;</a>
+							</div>
+						</div>
+						<hr/>
+						<p>Fotos dos rolês.</p>
+						<div id="gradeGaleria" class="grade"></div>
+					</div>
+				</div>
+				<div class="cartao sombraLeve" id="calendario" style="background-image: url('')">
+					<div>
+						<div class="botoes">
+							<h2 class="titulo">Graleria</h2>
+							<div>
+								<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarGaleria()">&times;</a>
+							</div>
+						</div>
+					<hr/>
+					<p>Execução dos projetos.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="fundoCinza"style="border-top-left-radius: 320px;">
+			<div id="rodape">
+				<div id="logo"></div>
+				<div id="infos">
+					<h3 id="nome">Luis Lima</h3>
+					<a href="tel://+5519974172566" id="telefone" >+55 19.97417-2566</a>
+					<a href="mailto://lhslima16@gmail.com" id="email">Enviar e-mail</a>
+				</div>
+			</div>
+			<div style="text-align: center; color: #fff; padding: 50px 0px 50px 0px; font-size: 12px;">
+				&reg; Todos os direitos reservados aos seus respectivos autores.<br/>
+				&reg; All the rights reserved to their respective authors.<br/><br/>
+				Developed by (desenvolvido por) <a href="http://luislimadev.github.io/LLDev/" target="_blank">LLDev</a>
+			</div>
+		</footer>
+
+	</body>
+	<script>
+		altura = window.innerHeight;
+		largura = window.innerWidth;
+
+		//getById("tudo").style.height = altura+"px";
+		getById("comandosBanner").style.height = ( altura - 100 )+"px";
+		//getById("rodape").style.height = ( altura / 2 )+"px";
+		getById("comandosBanner").style.padding = "110px 0px 0px 0px";
+		getById("dstqCapa").style.height = ((altura / 5) * 3)+"px";
+		getById("dstqCapa").style.width = ((altura / 5) * 3)+"px";
+		getById("reprodutor").style.top = ( altura - 120)+"px";
+		getById("reprodutor").style.left = ( largura - 120)+"px";
+
+		setTimeout(function(){
+			getById("tudo").style.margin = "0% 0%";
+		}, 500)
+		
+		getById("abrirMenu").addEventListener("click", function(){
+			getById("menuNav").style.width = "300px";
+		});
+		
+		getById("fechaMenu").addEventListener("click", function(){
+			getById("menuNav").style.width = "0px";
+		});
+
+		function carregarMusicas(){
+			getById("playlist").innerHTML = "";
+			indexador = 0;
+			var divisor;
+			while( indexador < 3 ){
+				link = document.createElement("a");
+				link.href = musicas[indexador].link;
+				link.innerText = musicas[indexador].titulo;
+				link.target = "reprodutor";
+				divisor = document.createElement("div");
+				divisor.style.backgroundImage = "url(" + musicas[indexador].capa + ")";
+				divisor.setAttribute("class", "posicao" + indexador );
+				divisor.appendChild(link);
+				getById("playlist").appendChild(divisor);
+				indexador++;
+			}
+		}
+
+		function carregarTodasMusicas(){
+			getById("playlist").innerHTML = "";
+			total = musicas.length;
+			indexador = 0;
+			var divisor;
+			while( indexador < total ){
+				link = document.createElement("a");
+				link.href = musicas[indexador].link;
+				link.innerText = musicas[indexador].titulo;
+				link.target = "reprodutor";
+				divisor = document.createElement("div");
+				divisor.style.backgroundImage = "url(" + musicas[indexador].capa + ")";
+				divisor.setAttribute("class", "posicao" + indexador );
+				divisor.appendChild(link);
+				getById("playlist").appendChild(divisor);
+				indexador++;
+			}
+		}
+
+		function carregarTodaGaleria(){
+			getById("gradeGaleria").innerHTML = "";
+			total = fotos.length;
+			indexador = 0;
+			var divisor;
+			while( indexador < total ){
+				link = document.createElement("a");
+				link.href = fotos[indexador].link;
+				link.innerText = fotos[indexador].titulo;
+				divisor = document.createElement("div");
+				divisor.style.backgroundImage = "url(" + fotos[indexador].link + ")";
+				divisor.appendChild(link);
+				getById("gradeGaleria").appendChild(divisor);
+				indexador++;
+			}
+		}
+
+		function carregarGaleria(){
+			getById("gradeGaleria").innerHTML = "";
+			total = fotos.length;
+			indexador = 0;
+			var divisor;
+			while( indexador < 3 ){
+				link = document.createElement("a");
+				link.href = fotos[indexador].link;
+				link.innerText = fotos[indexador].titulo;
+				divisor = document.createElement("div");
+				divisor.style.backgroundImage = "url(" + fotos[indexador].link + ")";
+				divisor.appendChild(link);
+				getById("gradeGaleria").appendChild(divisor);
+				indexador++;
+			}
+		}
+
+		function ajusta(){
+			playlist = getById("playlist");
+			posicao2 = getByClass("posicao2")[0];
+			posicao2.style.height = playlist.offsetWidth + "px";
+		}
+
+	</script>
+	<script type="text/javascript">
+
+		window.addEventListener("scroll", function(){
+			//console.log(window.scrollY);
+			comandosBanner.style.backgroundPosition = "50% -" + (window.scrollY / 2 ) + "px";
+			//getById("corpo").style.transform = "translate( 0px, -" + ( window.scrollY * 5 ) + "px)";
+		});
+
+		carregarMusicas();
+		carregarGaleria();
+
+		if (largura < 500){
+			ajusta();
+		}
+
+		window.addEventListener("resize", function(){
+			if (largura < 500){
+				ajusta();
+			}
+		});
+
+	</script>
+</html>
