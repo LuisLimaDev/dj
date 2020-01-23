@@ -632,6 +632,7 @@
 				link = document.createElement("a");
 				link.href = fotos[indexador].link;
 				link.innerText = fotos[indexador].titulo;
+				link.target = "_blank";
 				divisor = document.createElement("div");
 				divisor.style.backgroundImage = "url(" + fotos[indexador].link + ")";
 				divisor.appendChild(link);
