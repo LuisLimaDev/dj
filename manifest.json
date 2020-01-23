@@ -1,0 +1,20 @@
+{
+	"name": "Luis Lima Dev",
+	"short_name": "LLDev",
+	"icons": [
+		{
+		"src" : "https://github.com/LuisLimaDev/dj/raw/gh-pages/img/favicon.png",
+		"type": "image/png"
+		"sizes": "144x144"
+		}
+	],
+	"start_url": [
+		{
+		"index.html",
+		"bancoInfos.js"
+		}
+	],
+	"display": "standalone",
+	"background_color": "#112277",
+	"theme_color": "#127"
+}
