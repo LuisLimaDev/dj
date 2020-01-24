@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 	<head>
-		<title>LUIS LIMA :: beta</title>
+		<title>LUIS LIMA :: Oficial</title>
 		<meta charset="UTF-8">
+		<meta http-equiv="content-language” content=”pt-BR”>
 		<link rel="manifest" href="manifest.json">
 		<link rel="icon" type="image/png" href="https://github.com/LuisLimaDev/dj/raw/gh-pages/img/favicon.png"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -190,7 +191,7 @@
 				overflow-y: scroll;
 				padding: 20px 0px;
 				background-color: #000000;
-				height: 75%;
+				height: 95%;
 				box-shadow: 0px 10px 15px -5px #333;
 				animation-name: darZoom;
 				animation-duration: 0.5s;
@@ -280,7 +281,15 @@
 				margin: 0px 15%;
 				padding: 100px 0px;
 			}
-			
+
+			div#verFoto img{
+				width: 100%;
+			}
+
+			div#verFoto span{
+				background-color: rgba(255,255,255,0.5);
+			}
+
 			.botoes a{
 				border: 3px solid #fff;
 				margin: 10px 0px;
@@ -319,8 +328,8 @@
 					font-size: 12px;
 				}
 
-				.posicao2 {
-					grid-column: 1/ span 3;
+				.posicao2, .posicao5, .posicao8 {
+					grid-column: 1/ span 2;
 				}
 
 			}
@@ -479,7 +488,7 @@
 				</div>
 				<div id="comandosBanner" style="">
 					<a id="proximo"><b></b></a>
-					<a id="aId" style=""><img id="dstqCapa" type="image/jpeg" /><h2 id="dstqNome">LLDev Sistemas Web</h2></a>
+					<a id="aId" style=""><img id="dstqCapa" type="image/jpeg" /><h2 id="dstqNome">Bem vindo</h2></a>
 					<a id="anterior"><b></b></a>
 				</div>
 			</div>
@@ -492,6 +501,7 @@
 									<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarMusicas()">&times;</a>
 								</div>
 							</div>
+							<hr/>
 						<br/>
 							<div id="playlist" class="grade">
 							</div>
@@ -507,8 +517,9 @@
 							<div>
 								<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarGaleria()">&times;</a>
 							</div>
-						</div>
 						<hr/>
+						</div>
+						<div id="verFoto"></div>
 						<p>Fotos dos rolês.</p>
 						<div id="gradeGaleria" class="grade"></div>
 					</div>
@@ -516,7 +527,7 @@
 				<div class="cartao sombraLeve" id="calendario" style="background-image: url('')">
 					<div>
 						<div class="botoes">
-							<h2 class="titulo">Graleria</h2>
+							<h2 class="titulo">Eventos</h2>
 							<div>
 								<a href="#fecha" id="mzkBotoes" class="botoes escondido" onclick="carregarGaleria()">&times;</a>
 							</div>
@@ -569,6 +580,17 @@
 			getById("menuNav").style.width = "0px";
 		});
 
+		function imagemClicada(link, titulo){
+			getById("verFoto").innerHTML = "";
+			imagem = document.createElement("img");
+			imagem.src = link;
+			nome = document.createElement("span");
+			nome.innerHTML = titulo;
+			getById("verFoto").appendChild( nome );
+			getById("verFoto").appendChild( imagem );
+			getById("galeria").scrollIntoView();
+		}
+
 		function carregarMusicas(){
 			getById("playlist").innerHTML = "";
 			indexador = 0;
@@ -607,16 +629,19 @@
 		}
 
 		function carregarTodaGaleria(){
+			getById("verFoto").innerHTML = "";
 			getById("gradeGaleria").innerHTML = "";
 			total = fotos.length;
 			indexador = 0;
 			var divisor;
 			while( indexador < total ){
 				link = document.createElement("a");
-				link.href = fotos[indexador].link;
+				link.href = "javascript:imagemClicada('" + fotos[indexador].link + "','" + fotos[indexador].titulo +"')";
 				link.innerText = fotos[indexador].titulo;
+				//link.target = "_blank";
 				divisor = document.createElement("div");
 				divisor.style.backgroundImage = "url(" + fotos[indexador].link + ")";
+				divisor.setAttribute("class", "posicao" + indexador );
 				divisor.appendChild(link);
 				getById("gradeGaleria").appendChild(divisor);
 				indexador++;
@@ -624,17 +649,19 @@
 		}
 
 		function carregarGaleria(){
+			getById("verFoto").innerHTML = "";
 			getById("gradeGaleria").innerHTML = "";
 			total = fotos.length;
 			indexador = 0;
 			var divisor;
 			while( indexador < 3 ){
 				link = document.createElement("a");
-				link.href = fotos[indexador].link;
+				link.href = "javascript:imagemClicada('" + fotos[indexador].link + "','" + fotos[indexador].titulo +"')";
 				link.innerText = fotos[indexador].titulo;
-				link.target = "_blank";
+				//link.target = "_blank";
 				divisor = document.createElement("div");
 				divisor.style.backgroundImage = "url(" + fotos[indexador].link + ")";
+				divisor.setAttribute("class", "posicao" + indexador );
 				divisor.appendChild(link);
 				getById("gradeGaleria").appendChild(divisor);
 				indexador++;
